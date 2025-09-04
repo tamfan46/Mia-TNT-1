@@ -1,52 +1,34 @@
-
 <html>
 <head>
-<title>MIA IPTV AIS</title>
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no">
-<link rel="stylesheet" type="text/css" href="/clap.css">
-<script src="//cdn.jsdelivr.net/npm/@clappr/player@0.4.0/dist/clappr.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/mux.js@5.6.7/dist/mux.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/level-selector@latest/dist/level-selector.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/clappr-playback-rate-plugin@latest/dist/clappr-playback-rate-plugin.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/shaka-player@2.5.10/dist/shaka-player.compiled.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.external.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/cdnbye-shaka@latest"></script>
-<style> 
-body {
-    background-color: #000000;
-}
-</style>
+  <title>TNT Sports 1</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no">
+  <script src="//cdn.jsdelivr.net/npm/@clappr/player@0.4.0/dist/clappr.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/shaka-player@2.5.10/dist/shaka-player.compiled.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.external.min.js"></script>
+  <style>
+    body { background:#000; margin:0; }
+    #player { width:100%; height:100vh; }
+  </style>
 </head>
-<div id="player"></div>
-<script>
-  var player = new Clappr.Player({
-          source: 'https://otte.live.fly.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/wf8usag51e/out/v1/bd3b0c314fff4bb1ab4693358f3cd2d3/cenc.mpd',
-          mimeType: 'application/dash+xml',
-          height: '100%',
-          width: '100%',
-          autoPlay: true,
-          plugins: [LevelSelector, DashShakaPlayback, Clappr.MediaControl],
-          events: {onReady: function() {var plugin = this.getPlugin('click_to_pause'); plugin && plugin.disable();},},
-          chromecast: {
-              preload: 'metadata',
-              contentType: 'video/mpd',
-          },
-          shakaConfiguration: {
-              drm: {
-              clearKeys: {
-					'ae26845bd33038a9c0774a0981007294':'63ac662dde310cfb4cc6f9b43b34196d'		
-                  }
-              },
-          },
-          shakaOnBeforeLoad: function (shaka_player) {},
-          parentId: '#player'
-      });
-	  
+<body>
+  <div id="player"></div>
+  <script>
+    var player = new Clappr.Player({
+      source: 'https://otte.live.fly.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/wf8usag51e/out/v1/bd3b0c314fff4bb1ab4693358f3cd2d3/cenc.mpd',
+      mimeType: 'application/dash+xml',
+      autoPlay: true,
+      width: '100%',
+      height: '100%',
+      plugins: [DashShakaPlayback],
+      shakaConfiguration: {
+        drm: {
+          clearKeys: {
+            'ae26845bd33038a9c0774a0981007294': '63ac662dde310cfb4cc6f9b43b34196d'
+          }
+        }
+      },
+      parentId: '#player'
+    });
   </script>
-    <span style='position:absolute;bottom:10px;right:20px;font-size: 15px; font-weight: bold;color: #ff0;'><em>MIA IPTV</em></span>
-   <center>
-  <p><ins>MIA IPTV</ins></p>
-   </center>
+</body>
 </html>
